@@ -1,0 +1,160 @@
+{
+    "text": [
+        {
+            "lang": [
+                "Play",
+                "Joaca"
+            ]
+        },
+        {
+            "lang": [
+                "Settings",
+                "Setări"
+            ]
+        },
+        {
+            "lang": [
+                "Puzzle Mode",
+                "Modul Puzzle"
+            ]
+        },
+        {
+            "lang": [
+                "Maze Mode",
+                "Modul Labirint"
+            ]
+        },
+        {
+            "lang": [
+                "Level Creator",
+                "Creator Nivele"
+            ]
+        },
+        {
+            "lang": [
+                "Go Back",
+                "Inapoi"
+            ]
+        },
+        {
+            "lang": [
+                "Volume",
+                "Volum"
+            ]
+        },
+        {
+            "lang": [
+                "Language",
+                "Limba"
+            ]
+        },
+        {
+            "lang": [
+                "Instructions",
+                "Instructiuni"
+            ]
+        },
+        {
+            "lang": [
+                "Get to the end of the maze as soon as you can!\nMove around with:",
+                "Gaseste iesirea din labirint in cat mai putin timp!\nDeplaseaza-te cu:"
+            ]
+        },
+        {
+            "lang": [
+                "Collect coins to increase your score :)",
+                "Strange monede pentru a-ti creste scorul :)"
+            ]
+        },
+        {
+            "lang": [
+                "Let's go!",
+                "Ok!"
+            ]
+        },
+        {
+            "lang": [
+                "Congratulations!",
+                "Felicitari!"
+            ]
+        },
+        {
+            "lang": [
+                "You have completed the maze in ",
+                "Ai terminat labirintul in "
+            ]
+        },
+        {
+            "lang": [
+                "seconds!\nYour final score is:",
+                "secunde!\nScorul tau final este:"
+            ]
+        },
+        {
+            "lang": [
+                "Continue",
+                "Continua"
+            ]
+        },
+        {
+            "lang": [
+                "Time: ",
+                "Timp: "
+            ]
+        },
+        {
+            "lang": [
+                "Score: ",
+                "Scor: "
+            ]
+        },
+        {
+            "lang": [
+                "Level Creator",
+                "Creator Nivele"
+            ]
+        },
+        {
+            "lang": [
+                "Welcome! Here you can create your own levels,\nor load an existing level to play it.\n Press ESC when playing the level \nto go back to the level editor.",
+                "Bine ai venit! Aici poti crea nivele noi\nsau sa incarci nivele deja create.\nApasa ESC in timpul jocului\n pentru a te intoarce la editor."
+            ]
+        },
+        {
+            "lang": [
+                "Got it!",
+                "Ok!"
+            ]
+        },
+        {
+            "lang": [
+                "\nNew High Score!",
+                "\nNou record!"
+            ]
+        },
+        {
+            "lang": [
+                "\nMute Sound",
+                "\nOpreste Sunetul"
+            ]
+        },
+        {
+            "lang": [
+                "\nBack to Main Menu",
+                "\nInapoi la meniu"
+            ]
+        },
+        {
+            "lang": [
+                "Paused",
+                "Pauza"
+            ]
+        },
+        {
+            "lang": [
+                "\nUnute Sound",
+                "\nPorneste Sunetul"
+            ]
+        }
+    ]
+}
