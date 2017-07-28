@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour {
 
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 
-		socialButton.GetComponent<RectTransform> ().localPosition = new Vector3 (Screen.width - 100, 1, Screen.height - 100);
+		//socialButton.GetComponent<RectTransform> ().localPosition = new Vector3 (100, 1, Screen.height - 100);
 	}
 	public void onToggleButtonClick(){
 	
@@ -86,5 +86,10 @@ public class MenuManager : MonoBehaviour {
 			PlayerPrefs.SetInt ("language", 0);
 		PlayerPrefs.Save ();
 		animator.SetFloat ("Animate", 0F);
+	}
+
+	public void onSocialBtnClick() {
+	
+		Application.OpenURL ("https://www.facebook.com/profile.php?id=100009351881540");
 	}
 }
