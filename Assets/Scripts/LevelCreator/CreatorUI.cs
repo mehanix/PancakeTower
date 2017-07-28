@@ -48,8 +48,9 @@ public class CreatorUI : MonoBehaviour {
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 
 		//0 eng 1 romana
-		lang = new LangTemplate (26);
-		for(int i=0;i<26;i++)
+		int lineCount=31;
+		lang = new LangTemplate (lineCount);
+		for(int i=0;i<lineCount;i++)
 		{
 			lang.text[i] = new LanguageBlock ();
 			//lang.text[i].lang[0]= new LanguageBlock ();
@@ -129,17 +130,37 @@ public class CreatorUI : MonoBehaviour {
 		lang.text [21].lang [0] = "\nNew High Score!";
 		lang.text [21].lang [1] = "\nNou record!";
 
-		lang.text [22].lang [0] = "\nMute Sound";
-		lang.text [22].lang [1] = "\nOpreste Sunetul";
+		lang.text [22].lang [0] = "Mute Sound";
+		lang.text [22].lang [1] = "Opreste Sunetul";
 
-		lang.text [23].lang [0] = "\nBack to Main Menu";
-		lang.text [23].lang [1] = "\nInapoi la meniu";
+		lang.text [23].lang [0] = "Back to Main Menu";
+		lang.text [23].lang [1] = "Inapoi la meniu";
 
 		lang.text [24].lang [0] = "Paused";
 		lang.text [24].lang [1] = "Pauza";
 
-		lang.text [25].lang [0] = "\nUnute Sound";
+		lang.text [25].lang [0] = "\nUnmute Sound";
 		lang.text [25].lang [1] = "\nPorneste Sunetul";
+
+		lang.text [26].lang [0] = "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!";
+		lang.text [26].lang [1] = "Termina puzzle-urile in cat mai putin timp!\nToate monedele trebuie colectate pentru ca iesirea sa se deschida.\nEvita capcanele!";
+
+		lang.text [27].lang [0] = "Coins: ";
+		lang.text [27].lang [1] = "Monede: ";
+
+		lang.text [28].lang [0] = "You have completed Puzzle Mode in ";
+		lang.text [28].lang [1] = "Ai terminat Modul Puzzle in ";
+
+		lang.text [29].lang [0] = " seconds.\n In total, you have died ";
+		lang.text [29].lang [1] = " secunde.\n In total, ai murit de ";
+
+		lang.text [30].lang [0] = " times.";
+		lang.text [30].lang [1] = " ori.";
+
+
+
+
+
 		//print (lang.text [2].ro);
 		string langData = JsonUtility.ToJson (lang,true);
 		print (langData);

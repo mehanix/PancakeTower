@@ -102,7 +102,6 @@ public class MazeGenerator : MonoBehaviour {
 				divideHorizontal(l, r, t, b);
 
 			else if(height == width){
-				Random rand = new Random();
 				int pickOne = Random.Range(0,1);
 
 				if(pickOne==1)

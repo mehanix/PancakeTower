@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour {
 	public GameObject player;
 	public bool shouldShowInstructionsWindow=true;
 	public Rect windowRect,scoreWindowRect,buttonRect;
-
+	public Timer timer;
 	public LanguageManager languagemanager;
 	public int languageCode;
 
@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour {
 		levels[currentLevel] = Instantiate(levels[0],new Vector3(-4,0,-5), Quaternion.identity) as GameObject;
 		player = GameObject.Find ("Player");
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
+		timer = GetComponent<Timer> ();
+
 
 	}
 
@@ -48,11 +50,11 @@ public class LevelManager : MonoBehaviour {
 		scoreWindowRect = CenterRect (400, 250);
 		windowRect = CenterRect (400, 400);
 		GUI.skin = skin;
-		//if (shouldShowInstructionsWindow == true) 
-		//	GUI.Window (0, scoreWindowRect, Windows, "Instructions",skin.GetStyle("MMInstructionsWindow"));
+		if (shouldShowInstructionsWindow == true) 
+			GUI.Window (0, scoreWindowRect, Windows, languagemanager.lang.text [8].lang[languageCode] ,skin.GetStyle("MMInstructionsWindow"));
 		if (showPausedWindow == true)
 			GUI.Window (1, new Rect ((Screen.width / 2) - 75, (Screen.height / 2) - 125, 150, 250), Windows, "Paused", skin.GetStyle ("MMInstructionsWindow"));
-		
+		timer.coinScoreText = languagemanager.lang.text [27].lang [languageCode] + player.GetComponent<PlayerMovement> ().coinCount.ToString() + "/" + player.GetComponent<PlayerMovement> ().totalCoinsPerLevel.ToString();
 	}
 
 	void Windows(int windowId) {
@@ -60,7 +62,7 @@ public class LevelManager : MonoBehaviour {
 
 		if (windowId == 0) {
 			//instructions
-			GUI.Label (new Rect (0, 60, 400, 50), "Complete the puzzles as fast as you can, while avoiding spike traps and collecting coins.", skin.GetStyle ("MMCenteredText"));
+			GUI.Label (new Rect (0, 80, 400, 50), languagemanager.lang.text [26].lang [languageCode], skin.GetStyle ("MMCenteredText"));
 			GUI.Label (new Rect (0, 250, 400, 50), "S", skin.GetStyle ("MMCenteredText"));
 		
 			if (GUI.Button (new Rect (150, 185, 100, 35), languagemanager.lang.text [11].lang [languageCode])) {

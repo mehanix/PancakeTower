@@ -44,7 +44,7 @@ public class MazeGUI : MonoBehaviour {
 		if (shouldShowVictoryWindow == true)
 			windowRect = GUI.Window (1, scoreWindowRect, Windows, languagemanager.lang.text [12].lang[languageCode],skin.GetStyle("MMInstructionsWindow"));
 		if (showPausedWindow == true)
-			windowRect = GUI.Window (2, new Rect ((Screen.width / 2) - 75, (Screen.height / 2) - 125, 150, 250), Windows, "Paused", skin.GetStyle ("MMInstructionsWindow"));
+			windowRect = GUI.Window (2, new Rect ((Screen.width / 2) - 75, (Screen.height / 2) - 125, 150, 250), Windows, languagemanager.lang.text [24].lang[languageCode], skin.GetStyle ("MMInstructionsWindow"));
 		
 	}
 

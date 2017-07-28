@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -12,12 +13,18 @@ public class Timer : MonoBehaviour {
 	public Rect scoreRect;
 	MazeGUI mazegui;
 	public GUISkin skin;
+	bool showScore=false;
+	public string coinScoreText;
 
 	void Start () {
 
 		shouldRun = false;
 		score = 0;
 		mazegui = GetComponent<MazeGUI> ();
+		Scene scene = SceneManager.GetActiveScene ();
+		if (scene.name == "MazeMode")
+			showScore = true;
+
 	}
 	
 	void Update () {
@@ -33,8 +40,11 @@ public class Timer : MonoBehaviour {
 	
 		scoreRect = positionScoreRect ();
 		GUI.skin = skin;
-		GUI.Label (timerRect, currentTime, skin.GetStyle("Timer"));
-		GUI.Label (scoreRect,mazegui.languagemanager.lang.text [17].lang[mazegui.languageCode] + score.ToString(), skin.GetStyle("Timer"));
+		GUI.Label (timerRect, currentTime,skin.GetStyle("Timer"));
+		if(showScore==true)
+			GUI.Label (scoreRect,mazegui.languagemanager.lang.text [17].lang[mazegui.languageCode] + score.ToString(), skin.GetStyle("Timer"));
+		else
+			GUI.Label (scoreRect,coinScoreText + score.ToString(), skin.GetStyle("Timer"));
 
 
 	}
