@@ -15,13 +15,16 @@ public class Timer : MonoBehaviour {
 	public GUISkin skin;
 	bool showScore=false;
 	public string coinScoreText;
-
+	LevelManager levelmanager;
+	Scene scene;
 	void Start () {
 
 		shouldRun = false;
 		score = 0;
 		mazegui = GetComponent<MazeGUI> ();
-		Scene scene = SceneManager.GetActiveScene ();
+		levelmanager = GetComponent<LevelManager> (); 
+		 scene = SceneManager.GetActiveScene ();
+		print (timerRect.ToString());
 		if (scene.name == "MazeMode")
 			showScore = true;
 
@@ -29,11 +32,13 @@ public class Timer : MonoBehaviour {
 	
 	void Update () {
 
-		if (shouldRun == true && mazegui.paused == false) {
-			
-			startTime += Time.deltaTime;
-			currentTime = string.Format (mazegui.languagemanager.lang.text [16].lang[mazegui.languageCode] + "{0:0.0}", startTime);
-		}
+
+		if (shouldRun == true)
+			if((scene.name=="MazeMode" && mazegui.paused == false) || (scene.name=="StoryMode" && levelmanager.paused==false))	{
+				startTime += Time.deltaTime;
+			currentTime = string.Format ("{0:0.0}", startTime);
+			}
+	
 	}
 
 	void OnGUI() {
@@ -42,7 +47,7 @@ public class Timer : MonoBehaviour {
 		GUI.skin = skin;
 		GUI.Label (timerRect, currentTime,skin.GetStyle("Timer"));
 		if(showScore==true)
-			GUI.Label (scoreRect,mazegui.languagemanager.lang.text [17].lang[mazegui.languageCode] + score.ToString(), skin.GetStyle("Timer"));
+			GUI.Label (scoreRect,mazegui.languagemanager.lang.text [17].lang[mazegui.languageCode] + score, skin.GetStyle("Timer"));
 		else
 			GUI.Label (scoreRect,coinScoreText + score.ToString(), skin.GetStyle("Timer"));
 

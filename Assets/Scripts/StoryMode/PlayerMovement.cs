@@ -39,85 +39,19 @@ public class PlayerMovement : MonoBehaviour {
 
 		void Update () {
 
-//		input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
-//
-//		if (input.x != 0) {
-//		
-//			rb.angularVelocity = Vector3.right * input.x * 1F;
-//		}
-//
-//
-//		if (input.z != 0) {
-//
-//			rb.angularVelocity = Vector3.forward * -input.z * 1F;
-//		}
-
-
-		//CheckForFalling ();
-
-
+	
 
 		if (collisionNr == 0) {
 			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 
 
 		}
-		if (collisionNr >0 ) {
+		if (collisionNr > 0) {
 			rb.constraints = RigidbodyConstraints.FreezeRotation;
 
 
 		}
-//	
-//		if (Input.GetAxisRaw ("Horizontal") != 0) {
-//			GetComponent<Rigidbody> ().angularVelocity = Vector3.right * Input.GetAxisRaw ("Horizontal") * 1F;
-//
-//		} else if (Input.GetAxisRaw ("Vertical") != 0) {
-//			GetComponent<Rigidbody> ().angularVelocity = Vector3.forward * -Input.GetAxisRaw ("Vertical") * 1F;
-//
-//		}
-		
-//			if (shouldLerp == true) {
-//			
-//				timeSinceStart = Time.time - startTime;
-//				percentageFallen = timeSinceStart / finalTime;
-//				transform.position= Vector3.Lerp(transform.position,finalPos,percentageFallen);
-//				if (transform.position==finalPos)
-//					shouldLerp = false;
-//			}
-		
-		//}
-
-		//verificat daca sunt in aer
-
-		//Tumbling!
-		//determ pivot point in jurul caruia se roteste cubul in fct de directia in care se merge
-		// => in fct de tasta apasata. daca nu se apasa nimic, ramane 0
-		
-//	pivotDirection = Vector3.zero;
-//
-//		if (Input.GetKey(KeyCode.UpArrow))
-//			pivotDirection = Vector3.forward;
-//
-//		if (Input.GetKey(KeyCode.DownArrow))
-//			pivotDirection = Vector3.back;
-//
-//		if (Input.GetKey(KeyCode.LeftArrow))
-//			pivotDirection = Vector3.left;
-//
-//		if (Input.GetKey(KeyCode.RightArrow))
-//			pivotDirection = Vector3.right;
-//		
-//		if (pivotDirection != Vector3.zero && isPlayerRotating == false) {
-//		
-//			rotate (pivotDirection);
-//		}
 	}
-//	void rotate(Vector3 pivotDirection) {
-//	
-//		isPlayerRotating = true;
-//
-//	}
-
 	void FixedUpdate() {
 	
 		//adaugat forta doar cand viteza scade sub o limita ->snappier movement :D
@@ -163,11 +97,11 @@ public class PlayerMovement : MonoBehaviour {
 	void PlayerDeath()
 	{
 		//animatii fancy pt moarte + mutat la spawn
-		//rb.velocity = Vector3.zero;
 		GameObject explosion = GameObject.Instantiate(particles, transform.position, Quaternion.identity) as GameObject;
 		gameObject.GetComponent<AudioSource>().PlayOneShot (gameObject.GetComponent<AudioSource> ().clip);
 
-		transform.position = spawnPoint; 
+		transform.position = new Vector3(spawnPoint.x,transform.position.y,spawnPoint.z); 
+
 		Destroy (explosion, 2.0f);
 	}
 
@@ -175,8 +109,9 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		//verificat terminat nivel.. trecerea la niv urmator se face in gamemanager
 
-		if (other.transform.tag == "Enemy") PlayerDeath();
 
+		if (other.transform.tag == "Enemy")
+			PlayerDeath ();
 		if (other.transform.tag == "SpeedPad")
 			maxSpeed = 10;
 
@@ -228,14 +163,15 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	void toggleMovement(bool shouldMove)
 	{
-		//print ("toggled movement: " + shouldMove.ToString());
-		rb.useGravity = shouldMove;
-		GetComponent<BoxCollider> ().isTrigger = !shouldMove;
-		//GetComponent<BoxCollider> ().enabled = shouldMove;
 		if (shouldMove == false)
 			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 		else
 			rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
+		
+		//print ("toggled movement: " + shouldMove.ToString());
+		rb.useGravity = shouldMove;
+		GetComponent<BoxCollider> ().isTrigger = !shouldMove;
+		//GetComponent<BoxCollider> ().enabled = shouldMove;
 
 	}
 

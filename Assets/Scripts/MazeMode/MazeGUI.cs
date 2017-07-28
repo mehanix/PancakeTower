@@ -24,12 +24,14 @@ public class MazeGUI : MonoBehaviour {
 	public LanguageManager languagemanager;
 	public int languageCode;
 	void Start () {
+		setStaticVariables ();
 		languagemanager = GetComponent<LanguageManager> (); 
 		timer = this.gameObject.GetComponent<Timer>();
 		print (PlayerPrefs.GetInt ("highscore",0).ToString ());
 		audiosource = gameObject.GetComponent<AudioSource> ();
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 		soundMuteText= languagemanager.lang.text [22].lang[languageCode];
+
 	}
 
 	void OnGUI() {
@@ -140,5 +142,13 @@ public class MazeGUI : MonoBehaviour {
 			paused = !paused;
 			showPausedWindow = !showPausedWindow;
 		}
+	}
+
+	void setStaticVariables() {
+	
+		shouldShowInstructionsWindow = true;
+		shouldShowVictoryWindow=false;
+		showPausedWindow=false;
+		paused=false;
 	}
 }

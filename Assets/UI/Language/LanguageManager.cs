@@ -17,7 +17,7 @@ public  class LanguageManager : MonoBehaviour {
 	 	languagePath="Assets/Language/Language.json";
 		languageData = System.IO.File.ReadAllText (languagePath);
 
-		lang = new LangTemplate (26);
+		lang = new LangTemplate (31);
 		lang = JsonUtility.FromJson <LangTemplate>(languageData);
 	}
 

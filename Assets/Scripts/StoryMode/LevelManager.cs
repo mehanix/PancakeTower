@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour {
 	public Timer timer;
 	public LanguageManager languagemanager;
 	public int languageCode;
-
+	public PlayerMovement playermovement;
 
 	void Start () {
 		languagemanager = GetComponent<LanguageManager> (); 
@@ -33,14 +33,13 @@ public class LevelManager : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 		timer = GetComponent<Timer> ();
-
+		playermovement = player.GetComponent<PlayerMovement> ();
 
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//if (floor.GetComponent<FloorFalling>().isFalling == false) 
-			//levels[currentLevel] = Instantiate(levels[currentLevel],new Vector3(0, 5, 0), Quaternion.identity) as GameObject;
+
 		checkForPausing();
 		
 	}
@@ -54,7 +53,8 @@ public class LevelManager : MonoBehaviour {
 			GUI.Window (0, scoreWindowRect, Windows, languagemanager.lang.text [8].lang[languageCode] ,skin.GetStyle("MMInstructionsWindow"));
 		if (showPausedWindow == true)
 			GUI.Window (1, new Rect ((Screen.width / 2) - 75, (Screen.height / 2) - 125, 150, 250), Windows, "Paused", skin.GetStyle ("MMInstructionsWindow"));
-		timer.coinScoreText = languagemanager.lang.text [27].lang [languageCode] + player.GetComponent<PlayerMovement> ().coinCount.ToString() + "/" + player.GetComponent<PlayerMovement> ().totalCoinsPerLevel.ToString();
+		timer.coinScoreText = languagemanager.lang.text [27].lang [languageCode] + playermovement.coinCount + "/" + playermovement.totalCoinsPerLevel;
+		print (timer.coinScoreText);
 	}
 
 	void Windows(int windowId) {
@@ -66,7 +66,9 @@ public class LevelManager : MonoBehaviour {
 			GUI.Label (new Rect (0, 250, 400, 50), "S", skin.GetStyle ("MMCenteredText"));
 		
 			if (GUI.Button (new Rect (150, 185, 100, 35), languagemanager.lang.text [11].lang [languageCode])) {
+				Timer.shouldRun = true;
 				shouldShowInstructionsWindow = false;
+
 			}
 		}
 

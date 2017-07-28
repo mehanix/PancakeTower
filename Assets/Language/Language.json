@@ -134,14 +134,14 @@
         },
         {
             "lang": [
-                "\nMute Sound",
-                "\nOpreste Sunetul"
+                "Mute Sound",
+                "Opreste Sunetul"
             ]
         },
         {
             "lang": [
-                "\nBack to Main Menu",
-                "\nInapoi la meniu"
+                "Back to Main Menu",
+                "Inapoi la meniu"
             ]
         },
         {
@@ -152,8 +152,38 @@
         },
         {
             "lang": [
-                "\nUnute Sound",
+                "\nUnmute Sound",
                 "\nPorneste Sunetul"
+            ]
+        },
+        {
+            "lang": [
+                "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!",
+                "Termina puzzle-urile in cat mai putin timp!\nToate monedele trebuie colectate pentru ca iesirea sa se deschida.\nEvita capcanele!"
+            ]
+        },
+        {
+            "lang": [
+                "Coins: ",
+                "Monede: "
+            ]
+        },
+        {
+            "lang": [
+                "You have completed Puzzle Mode in ",
+                "Ai terminat Modul Puzzle in "
+            ]
+        },
+        {
+            "lang": [
+                " seconds.\n In total, you have died ",
+                " secunde.\n In total, ai murit de "
+            ]
+        },
+        {
+            "lang": [
+                " times.",
+                " ori."
             ]
         }
     ]
