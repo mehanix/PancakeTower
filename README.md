@@ -34,7 +34,7 @@ Besides the gameplay modes, the game also features level creation support, in an
 
 Pancake Tower was developed using Unity 5.6.1. Scripting was done in C#. The menu assets were done in Photoshop. Theme song courtesy of [Agnet 75](http://jake75gp.wixsite.com/agnet75), who was so kind as to compose it specially for the game. Sound effects created using [Bfxr](http://www.bfxr.net/).
 
-## How to download Blackout
+## How to download Pancake Tower
 
 If you already have Unity installed, you may clone the entire repository and open it in Unity. This enables you to play the game, as well as look through the source code, if you're curious about how the game works.
 
