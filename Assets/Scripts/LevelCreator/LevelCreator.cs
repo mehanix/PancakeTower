@@ -33,17 +33,8 @@ public class LevelCreator : MonoBehaviour {
 	
 		objectInstance = Instantiate (wallPrefab,new Vector3(14,0,-3), Quaternion.identity);
 
-		//if (width <= height)
-
 		objectInstance.GetComponent<Transform> ().localScale = new Vector3 (width, 1, height);
-		//else {
-		
-			//wallPrefab.GetComponent<Transform> ().localScale = new Vector3 (height, 1, width);
-			//wallPrefab.transform.Rotate (new Vector3 (0, 90, 0));
-
-		//}
-
-		//wallPrefab = originalWall;
+	
 	}
 
 
@@ -60,7 +51,7 @@ public class LevelCreator : MonoBehaviour {
 			objectInstance = Instantiate (spawnableObjects [objectId], new Vector3 (14, 0, -3), Quaternion.identity);
 			objectInstance.name = objectNames [objectId];
 
-			//spawnableObjects [objectId].transform.SetParent (level.transform);
+		
 		}
 	}
 				
@@ -166,5 +157,24 @@ public class LevelCreator : MonoBehaviour {
 	}
 
 
+	public void clearLevel() {
+	
+		GameObject[] objs;
 
+		objs = GameObject.FindGameObjectsWithTag ("Wall");
+
+		foreach (GameObject obj in objs){
+			Destroy (obj);
+		}
+
+		objs = GameObject.FindGameObjectsWithTag ("Coin");
+
+		foreach (GameObject obj in objs){
+			Destroy (obj);
+		}
+
+		Destroy(GameObject.FindGameObjectWithTag("Player"));
+		Destroy(GameObject.FindGameObjectWithTag("Goal"));
+
+		}
 }

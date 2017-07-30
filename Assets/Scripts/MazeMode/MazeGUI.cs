@@ -8,7 +8,6 @@ public class MazeGUI : MonoBehaviour {
 
 
 	public Rect windowRect,buttonRect,arrowkeysRect,scoreWindowRect;
-	public Rect[] controlsRect;
 	public GUISkin skin;
 	public float width, height;
 	public Texture arrowkeysTexture;
@@ -41,7 +40,7 @@ public class MazeGUI : MonoBehaviour {
 		windowRect = CenterRect (400, 400);
 		scoreWindowRect = CenterRect (400, 250);
 		if (shouldShowInstructionsWindow == true) 
-			windowRect = GUI.Window (0, windowRect, Windows,  languagemanager.lang.text [8].lang[languageCode],skin.GetStyle("MMInstructionsWindow"));
+			windowRect = GUI.Window (0, scoreWindowRect, Windows,  languagemanager.lang.text [8].lang[languageCode],skin.GetStyle("MMInstructionsWindow"));
 
 		if (shouldShowVictoryWindow == true)
 			windowRect = GUI.Window (1, scoreWindowRect, Windows, languagemanager.lang.text [12].lang[languageCode],skin.GetStyle("MMInstructionsWindow"));
@@ -62,17 +61,13 @@ public class MazeGUI : MonoBehaviour {
 		if(windowId==0) {
 				//instructions
 			GUI.Label (new Rect (0, 60, 400, 50), languagemanager.lang.text [9].lang[languageCode],skin.GetStyle("MMCenteredText"));
-			GUI.Label (new Rect (0, 250, 400, 50), languagemanager.lang.text [10].lang[languageCode],skin.GetStyle("MMCenteredText"));
+			GUI.Label (new Rect (0, 120, 400, 50), languagemanager.lang.text [10].lang[languageCode],skin.GetStyle("MMCenteredText"));
 
-				GUI.DrawTexture (arrowkeysRect, arrowkeysTexture);
-			GUI.Label (controlsRect[0], "a",skin.GetStyle("MMCenteredText"));
-				GUI.Label (controlsRect[1], "←",skin.GetStyle("MMCenteredText"));
-				GUI.Label (controlsRect[2], "↓",skin.GetStyle("MMCenteredText"));
-				GUI.Label (controlsRect[3], "→",skin.GetStyle("MMCenteredText"));
+
 
 
 				//start timer and hide window
-			if (GUI.Button (buttonRect, languagemanager.lang.text [11].lang[languageCode])) {
+			if (GUI.Button (new Rect (150, 185, 100, 35), languagemanager.lang.text [11].lang[languageCode])) {
 
 					Timer.shouldRun = true;
 					shouldShowInstructionsWindow = false;
@@ -91,8 +86,8 @@ public class MazeGUI : MonoBehaviour {
 				PlayerPrefs.SetInt ("highscore", totalScore);
 				PlayerPrefs.Save ();
 			}
-			string[] splitTime = timer.currentTime.Split ();
-			victoryMessage = languagemanager.lang.text [13].lang[languageCode] +splitTime[1] + languagemanager.lang.text [14].lang[languageCode] + totalScore;
+
+			victoryMessage = languagemanager.lang.text [13].lang[languageCode] + timer.currentTime + languagemanager.lang.text [14].lang[languageCode] + totalScore;
 
 			GUI.Label (new Rect (0, 60, 400, 50), victoryMessage, skin.GetStyle ("MMCenteredText"));
 			//GUI.Label (new Rect (0, 250, 400, 50), "Your score is: " + totalScore, skin.GetStyle ("MMCenteredText"));
@@ -105,13 +100,14 @@ public class MazeGUI : MonoBehaviour {
 		}
 		//pause window!
 			if (windowId == 2) {
-			soundMuteText = (audiosource.mute == true) ? languagemanager.lang.text [22].lang[languageCode] : languagemanager.lang.text [25].lang[languageCode];
+			soundMuteText = (audiosource.mute == true) ? languagemanager.lang.text [25].lang[languageCode] : languagemanager.lang.text [22].lang[languageCode];
 
 			//mute sound
 			if (GUI.Button (new Rect (15, 130, 120, 30), soundMuteText)) {
 			
 				audiosource.mute = !audiosource.mute;
-		
+				PlayerPrefs.SetInt ("Muted", (audiosource.mute == true) ? 1 : 0);
+
 			}
 			//back to menu
 			if (GUI.Button (new Rect(15,170,120,30),  languagemanager.lang.text [23].lang[languageCode])) {

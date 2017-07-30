@@ -17,11 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 	int level;
 	bool shouldLerp=false;
 	int collisionNr;
-	//tumbling
-	Vector3 pivotDirection;
-	bool isPlayerRotating;
-	//float startTime,finalTime,timeSinceStart,percentageFallen;
-	public int coinCount,totalCoinsPerLevel;
+	public int coinCount,totalCoinsPerLevel,deaths;
 
 
 	void Start () {
@@ -65,8 +61,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void CheckForFalling()
 	{
-	//	print("isFalling=" + GameObject.Find ("FloorNo" + manager.getCurrentLevel ().ToString ()).GetComponent<FloorFalling> ().isFalling.ToString());
-		//print ("Hasswitchedlevel=" + hasSwitchedLevel.ToString ());
+;
 
 			if (manager.getCurrentLevel () > 0)
 
@@ -101,7 +96,7 @@ public class PlayerMovement : MonoBehaviour {
 		gameObject.GetComponent<AudioSource>().PlayOneShot (gameObject.GetComponent<AudioSource> ().clip);
 
 		transform.position = new Vector3(spawnPoint.x,transform.position.y,spawnPoint.z); 
-
+		deaths++;
 		Destroy (explosion, 2.0f);
 	}
 
@@ -123,43 +118,52 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (other.transform.tag == "Goal")
 		{
+			
+				
 				hasSwitchedLevel = true;
 				toggleMovement (false);
 
-				//lerping!
-//				startTime=Time.time;
-//				finalTime = startTime + 3F;
 				print ("current level:" + manager.getCurrentLevel ());
-				finalPos = cm.PlayerSpawnPoints [manager.getCurrentLevel ()+1];
+				finalPos = cm.PlayerSpawnPoints [manager.getCurrentLevel () + 1];
 				finalPos.y = transform.position.y + 6.5F;
 				transform.position = finalPos;
-			//	shouldLerp = true;
+			
 
 
-				//rb.AddForce (new Vector3 (0, 20, 0) * moveSpeed);
+		
 
 				level = manager.getCurrentLevel () + 1;
-				transform.position = new Vector3(cm.PlayerSpawnPoints[level].x, 
-				transform.position.y,
-				cm.PlayerSpawnPoints[level].z);
+				transform.position = new Vector3 (cm.PlayerSpawnPoints [level].x, 
+					transform.position.y,
+					cm.PlayerSpawnPoints [level].z);
 
 
 				coinCount = 0;
 				manager.nextLevel ();
-				
+
 				int newcoins = GameObject.FindGameObjectsWithTag ("Coin").Length;
 				totalCoinsPerLevel = newcoins - totalCoinsPerLevel;
 
-				floor=GameObject.Find("FloorNo " + manager.getCurrentLevel().ToString());
+				floor = GameObject.Find ("FloorNo " + manager.getCurrentLevel ().ToString ());
 				spawnPoint = transform.position;
 				spawnPoint.y += 1;
+			}
 
+		if (other.transform.tag == "PMFinish") {
+		
 
-
-
-
-
+			manager.paused = true;
+			toggleMovement (false);
+			manager.shouldShowVictoryWindow = true;
 		}
+				
+
+
+
+
+
+
+
 	}
 	void toggleMovement(bool shouldMove)
 	{
@@ -168,10 +172,9 @@ public class PlayerMovement : MonoBehaviour {
 		else
 			rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
 		
-		//print ("toggled movement: " + shouldMove.ToString());
+
 		rb.useGravity = shouldMove;
 		GetComponent<BoxCollider> ().isTrigger = !shouldMove;
-		//GetComponent<BoxCollider> ().enabled = shouldMove;
 
 	}
 

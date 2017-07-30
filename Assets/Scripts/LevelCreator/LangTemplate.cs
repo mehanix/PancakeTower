@@ -6,13 +6,7 @@ using UnityEngine;
 public class LangTemplate {
 
 
-	//public string[,] text;
 
-
-	//public LangTemplate(int length) {
-	
-	//	text = new string[length,2];
-//	}
 
 	public LanguageBlock[] text;
 

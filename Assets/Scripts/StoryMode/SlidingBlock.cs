@@ -31,10 +31,8 @@ public class SlidingBlock : MonoBehaviour {
 
 	public void setInitialPos() {
 
-		//Transform tempParent = gameObject.transform.parent;
-		//tr.SetParent(null,true)
+	
 		tr.localPosition= new Vector3(initialPos.x, tr.localPosition.y, initialPos.z);
-		//gameObject.transform.parent = tempParent;
 
 	}
 	// Update is called once per frame

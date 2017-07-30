@@ -46,41 +46,13 @@ public class FloorFalling : MonoBehaviour {
 
 	 void updateFalling()
 	{
-//		currentHeight = transform.position.y;
-//		distance = currentHeight - previousHeight;
-//
-//		if(distance <1)
-//		{
-//			isFalling = false;
-//			GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-//
-//		} else 
-//		{
-//			isFalling = true;
-//		}
 
-
-
-//		if (GetComponent<Rigidbody> ().velocity.y > -0.5F ) {
-//			isFalling = false;
-//			GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-//		} else {
-//			isFalling = true;
-//		}
 	
 	}
 
 	void OnCollisionEnter(Collision other) {
 	
-//		print (nameCheck);
-//		print (other.gameObject.tag == "Floor".ToString ());
-//
-//		if (other.gameObject.name == nameCheck && other.gameObject.tag == "Floor" && isFalling==true) {
-//			isFalling = false;
-//		 	GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-//			//this.enabled = false;
-//
-//		}
+
 	}
 
 	public bool getFalling()

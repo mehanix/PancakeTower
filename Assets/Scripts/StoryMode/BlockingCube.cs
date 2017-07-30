@@ -13,9 +13,8 @@ public class BlockingCube : MonoBehaviour {
 	void Start () {
 
 			coinmanager = GameObject.Find ("Player").GetComponent<PlayerMovement> ();	
-			
-		//print (newcoins);
-	//	print (coinmanager.totalCoinsPerLevel);
+	
+	
 
 	}
 	

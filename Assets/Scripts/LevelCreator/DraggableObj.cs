@@ -18,19 +18,12 @@ public class DraggableObj : MonoBehaviour {
 
 	void OnMouseDrag() {
 	
-		//print ("dragging " + gameObject.name);
+
 
 		if (CreatorUI.editMode == true) {
 
 
-		
-			//Vector3 dist = 
-			//	mousePos.z = Vector3.Distance (Camera.main.transform.position, GameObject.Find ("Floor").transform.position);
-			//mousePos.z=10;
-			//point = Camera.main.ScreenToWorldPoint (mousePos);
-			//print (point.ToString ());
-			//transform.Translate (Mathf.Floor(point.x), transform.position.y, Mathf.Floor(point.z));
-			//transform.Translate(
+
 			mousePos = Input.mousePosition;
 			mousePos.z = Vector3.Distance (Camera.main.transform.position, GameObject.Find ("Floor").transform.position);
 			point = Camera.main.ScreenToWorldPoint (mousePos);
@@ -66,17 +59,5 @@ public class DraggableObj : MonoBehaviour {
 		
 	}
 
-//	float halfRounding(float number) {
-//
-//		//snapping to .5
-//
-//		float decimalPart = number % 1;
-//
-//		if (decimalPart <= 0.25F)
-//			return number - decimalPart;
-//		
-//			
-//
-//
-//	}
+
 }

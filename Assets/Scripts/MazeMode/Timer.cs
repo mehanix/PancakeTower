@@ -46,10 +46,17 @@ public class Timer : MonoBehaviour {
 		scoreRect = positionScoreRect ();
 		GUI.skin = skin;
 		GUI.Label (timerRect, currentTime,skin.GetStyle("Timer"));
-		if(showScore==true)
-			GUI.Label (scoreRect,mazegui.languagemanager.lang.text [17].lang[mazegui.languageCode] + score, skin.GetStyle("Timer"));
-		else
-			GUI.Label (scoreRect,coinScoreText + score.ToString(), skin.GetStyle("Timer"));
+
+		if (shouldRun) {
+			
+			if (showScore == true)
+				GUI.Label (scoreRect, mazegui.languagemanager.lang.text [17].lang [mazegui.languageCode] + score, skin.GetStyle ("Timer"));
+			else {
+				GUI.Label (scoreRect, coinScoreText, skin.GetStyle ("Timer"));
+
+			}
+		
+		}
 
 
 	}

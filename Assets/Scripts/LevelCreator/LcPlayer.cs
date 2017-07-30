@@ -10,7 +10,7 @@ public class LcPlayer : MonoBehaviour {
 	Rigidbody rb;
 	public static bool shouldMove;
 	int level;
-	Vector3 currentPos, newPos;
+	Vector3 currentPos, newPos,startPos;
 	CharacterController cc;
 
 	CreatorUI creatorui;
@@ -30,8 +30,11 @@ public class LcPlayer : MonoBehaviour {
 			if (rb.velocity.magnitude < maxSpeed)
 				rb.AddForce (input * moveSpeed);
 
+			if (Input.GetKeyUp (KeyCode.Escape)) {
+				rb.velocity = Vector3.zero;
+				transform.position = creatorui.playerInitialPos;
 
-
+			}
 		}
 
 		//adaugat forta doar cand viteza scade sub o limita ->snappier movement :D
@@ -55,6 +58,9 @@ public class LcPlayer : MonoBehaviour {
 			creatorui.ShowToolbox = true;
 			creatorui.playMode = true;
 			shouldMove = false;
+			rb.velocity = Vector3.zero;
+
+			transform.position = creatorui.playerInitialPos;
 		
 		}
 
@@ -68,12 +74,12 @@ public class LcPlayer : MonoBehaviour {
 		
 		}
 	}
-	void toggleMovement(bool shouldMove)
+	void toggleMovement(bool shouldmove)
 	{
-		print ("toggled movement: " + shouldMove.ToString());
-		rb.useGravity = shouldMove;
-		GetComponent<BoxCollider> ().enabled = shouldMove;
-		if (shouldMove == false)
+
+		rb.useGravity = shouldmove;
+		GetComponent<BoxCollider> ().enabled = shouldmove;
+		if (shouldmove == false)
 			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 		else
 			rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;

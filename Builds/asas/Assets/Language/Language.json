@@ -38,14 +38,14 @@
         },
         {
             "lang": [
-                "Volume",
-                "Volum"
+                "Volume: ",
+                "Volum: "
             ]
         },
         {
             "lang": [
-                "Language",
-                "Limba"
+                "Language: ",
+                "Limba: "
             ]
         },
         {
@@ -56,8 +56,8 @@
         },
         {
             "lang": [
-                "Get to the end of the maze as soon as you can!\nMove around with:",
-                "Gaseste iesirea din labirint in cat mai putin timp!\nDeplaseaza-te cu:"
+                "Get to the end of the maze as soon as you can!\nPress ESC to pause the game.",
+                "Gaseste iesirea din labirint in cat mai putin timp!\nApasa ESC pentru a pune pauza."
             ]
         },
         {
@@ -134,14 +134,14 @@
         },
         {
             "lang": [
-                "\nMute Sound",
-                "\nOpreste Sunetul"
+                "Mute Sound",
+                "Opreste Sunetul"
             ]
         },
         {
             "lang": [
-                "\nBack to Main Menu",
-                "\nInapoi la meniu"
+                "Back to Main Menu",
+                "Inapoi la meniu"
             ]
         },
         {
@@ -152,8 +152,38 @@
         },
         {
             "lang": [
-                "\nUnute Sound",
-                "\nPorneste Sunetul"
+                "Unmute Sound",
+                "Porneste Sunetul"
+            ]
+        },
+        {
+            "lang": [
+                "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!",
+                "Termina puzzle-urile in cat mai putin timp!\nColecteaza monedele pentru a deschide iesirea..\nEvita capcanele!"
+            ]
+        },
+        {
+            "lang": [
+                "Coins: ",
+                "Monede: "
+            ]
+        },
+        {
+            "lang": [
+                "You have completed Puzzle Mode in ",
+                "Ai terminat Modul Puzzle in "
+            ]
+        },
+        {
+            "lang": [
+                " seconds.\n In total, you have died ",
+                " secunde.\n In total, ai murit de "
+            ]
+        },
+        {
+            "lang": [
+                " times.",
+                " ori."
             ]
         }
     ]

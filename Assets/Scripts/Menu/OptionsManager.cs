@@ -25,6 +25,11 @@ public class OptionsManager : MonoBehaviour {
 	public void onSliderMoved() {
 	
 		AudioListener.volume = volumeSlider.value;
+
+		if (volumeSlider.value == 0)
+			PlayerPrefs.SetInt ("Muted", 1);
+		else
+			PlayerPrefs.SetInt ("Muted", 0);
 	}
 
 	public void onValueChanged(bool value) {
@@ -32,6 +37,11 @@ public class OptionsManager : MonoBehaviour {
 
 		language = value;
 		print (language.ToString ());
+	}
+
+	public void onSocialBtnClick() {
+	
+		Application.OpenURL ("https://www.facebook.com/profile.php?id=100009351881540");
 	}
 
 }

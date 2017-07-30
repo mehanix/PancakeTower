@@ -56,8 +56,8 @@
         },
         {
             "lang": [
-                "Get to the end of the maze as soon as you can!\nMove around with:",
-                "Gaseste iesirea din labirint in cat mai putin timp!\nDeplaseaza-te cu:"
+                "Get to the end of the maze as soon as you can!\nPress ESC to pause the game.",
+                "Gaseste iesirea din labirint in cat mai putin timp!\nApasa ESC pentru a pune pauza."
             ]
         },
         {
@@ -152,14 +152,14 @@
         },
         {
             "lang": [
-                "\nUnmute Sound",
-                "\nPorneste Sunetul"
+                "Unmute Sound",
+                "Porneste Sunetul"
             ]
         },
         {
             "lang": [
                 "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!",
-                "Termina puzzle-urile in cat mai putin timp!\nToate monedele trebuie colectate pentru ca iesirea sa se deschida.\nEvita capcanele!"
+                "Termina puzzle-urile in cat mai putin timp!\nColecteaza monedele pentru a deschide iesirea..\nEvita capcanele!"
             ]
         },
         {

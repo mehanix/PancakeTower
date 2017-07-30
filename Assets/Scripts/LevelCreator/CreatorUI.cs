@@ -21,7 +21,7 @@ public class CreatorUI : MonoBehaviour {
 	public Vector3 viewModePos = new Vector3 (8, 12, -12);
 	Quaternion viewModeRot = Quaternion.Euler (54, -34, 0);
 	int wallCount=0;
-	Vector3 playerInitialPos;
+	public Vector3 playerInitialPos;
 	public GameObject player;
 	string rotateModeString="Rotate\nMode",deleteModeString="Delete\nMode";
 	public static bool editMode = false;
@@ -31,6 +31,8 @@ public class CreatorUI : MonoBehaviour {
 	string[] loadLevels;
 	Vector2 loadLevelBoxVector;
 	int languageCode;
+	string RotateModeStyle="LcRotateModeBtn", DeleteModeStyle="LcDeleteModeBtn";
+
 
 	public  LangTemplate lang;
 
@@ -40,131 +42,131 @@ public class CreatorUI : MonoBehaviour {
 		lc = GetComponent<LevelCreator> ();	
 		editModePos = new Vector3 (0, 30, 0);
 
-//		string languageData = System.IO.File.ReadAllText (languagePath);
-//
-//		lang = new LangTemplate (26);
-//		lang = JsonUtility.FromJson <LangTemplate>(languageData);
+		string languageData = System.IO.File.ReadAllText (languagePath);
+
+		lang = new LangTemplate (26);
+		lang = JsonUtility.FromJson <LangTemplate>(languageData);
 
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 
-		//0 eng 1 romana
-		int lineCount=31;
-		lang = new LangTemplate (lineCount);
-		for(int i=0;i<lineCount;i++)
-		{
-			lang.text[i] = new LanguageBlock ();
-			//lang.text[i].lang[0]= new LanguageBlock ();
-
-		}
-		lang.text[0].lang[0]= "Play";
-		lang.text[0].lang[1]= "Joaca";
-
-	
-		lang.text [1].lang[0]= "Settings";
-		lang.text [1].lang[1]= "Setări";
-
-		lang.text [2].lang[0]= "Puzzle Mode";
-		lang.text [2].lang[1]= "Modul Puzzle";
-
-		lang.text [3].lang[0]= "Maze Mode";
-		lang.text [3].lang[1]= "Modul Labirint";
-
-		lang.text [4].lang[0]= "Level Creator";
-		lang.text [4].lang[1]= "Creator Nivele";
-
-		lang.text [5].lang[0]= "Go Back";
-		lang.text [5].lang[1]= "Inapoi";
-
-		lang.text [6].lang[0]= "Volume: ";
-		lang.text [6].lang[1]= "Volum: ";
-
-		lang.text [7].lang[0]= "Language: ";
-		lang.text [7].lang[1]= "Limba: ";
-
-		//maze mode
-		lang.text [8].lang[0]= "Instructions";
-		lang.text [8].lang[1]= "Instructiuni";
-
-		lang.text [9].lang[0]= "Get to the end of the maze as soon as you can!\nMove around with:";
-		lang.text [9].lang[1]= "Gaseste iesirea din labirint in cat mai putin timp!\nDeplaseaza-te cu:";
-
-		lang.text [10].lang[0]= "Collect coins to increase your score :)";
-		lang.text [10].lang[1]= "Strange monede pentru a-ti creste scorul :)";
-
-		lang.text [11].lang[0]= "Let's go!";
-		lang.text [11].lang[1]= "Ok!";
-
-		lang.text [12].lang[0]= "Congratulations!";
-		lang.text [12].lang[1]= "Felicitari!";
-
-		lang.text [13].lang[0]= "You have completed the maze in ";
-		lang.text [13].lang[1]= "Ai terminat labirintul in ";
-
-		lang.text [14].lang[0]= "seconds!\nYour final score is:";
-		lang.text [14].lang[1]= "secunde!\nScorul tau final este:";
-
-
-		lang.text [15].lang[0]= "Continue";
-		lang.text [15].lang[1]= "Continua";
-
-		lang.text [16].lang[0]= "Time: ";
-		lang.text [16].lang[1]= "Timp: ";
-
-		lang.text [17].lang[0]= "Score: ";
-		lang.text [17].lang[1]= "Scor: ";
-
-		//level creator
-
-
-		lang.text [18].lang[0]= "Level Creator";
-		lang.text [18].lang[1]= "Creator Nivele";
-
-
-		lang.text [19].lang[0]= "Welcome! Here you can create your own levels,\nor load an existing level to play it.\n Press ESC when playing the level \nto go back to the level editor.";
-		lang.text [19].lang[1]= "Bine ai venit! Aici poti crea nivele noi\nsau sa incarci nivele deja create.\nApasa ESC in timpul jocului\n pentru a te intoarce la editor.";
-
-
-		lang.text [20].lang[0]= "Got it!";
-		lang.text [20].lang[1]= "Ok!";
-
-		lang.text [21].lang [0] = "\nNew High Score!";
-		lang.text [21].lang [1] = "\nNou record!";
-
-		lang.text [22].lang [0] = "Mute Sound";
-		lang.text [22].lang [1] = "Opreste Sunetul";
-
-		lang.text [23].lang [0] = "Back to Main Menu";
-		lang.text [23].lang [1] = "Inapoi la meniu";
-
-		lang.text [24].lang [0] = "Paused";
-		lang.text [24].lang [1] = "Pauza";
-
-		lang.text [25].lang [0] = "\nUnmute Sound";
-		lang.text [25].lang [1] = "\nPorneste Sunetul";
-
-		lang.text [26].lang [0] = "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!";
-		lang.text [26].lang [1] = "Termina puzzle-urile in cat mai putin timp!\nToate monedele trebuie colectate pentru ca iesirea sa se deschida.\nEvita capcanele!";
-
-		lang.text [27].lang [0] = "Coins: ";
-		lang.text [27].lang [1] = "Monede: ";
-
-		lang.text [28].lang [0] = "You have completed Puzzle Mode in ";
-		lang.text [28].lang [1] = "Ai terminat Modul Puzzle in ";
-
-		lang.text [29].lang [0] = " seconds.\n In total, you have died ";
-		lang.text [29].lang [1] = " secunde.\n In total, ai murit de ";
-
-		lang.text [30].lang [0] = " times.";
-		lang.text [30].lang [1] = " ori.";
-
-
-
-
-
-		//print (lang.text [2].ro);
-		string langData = JsonUtility.ToJson (lang,true);
-		print (langData);
-		File.WriteAllText ("Assets/Language/Language.json",langData);
+//		//0 eng 1 romana
+//		int lineCount=31;
+//		lang = new LangTemplate (lineCount);
+//		for(int i=0;i<lineCount;i++)
+//		{
+//			lang.text[i] = new LanguageBlock ();
+//			//lang.text[i].lang[0]= new LanguageBlock ();
+//
+//		}
+//		lang.text[0].lang[0]= "Play";
+//		lang.text[0].lang[1]= "Joaca";
+//
+//	
+//		lang.text [1].lang[0]= "Settings";
+//		lang.text [1].lang[1]= "Setări";
+//
+//		lang.text [2].lang[0]= "Puzzle Mode";
+//		lang.text [2].lang[1]= "Modul Puzzle";
+//
+//		lang.text [3].lang[0]= "Maze Mode";
+//		lang.text [3].lang[1]= "Modul Labirint";
+//
+//		lang.text [4].lang[0]= "Level Creator";
+//		lang.text [4].lang[1]= "Creator Nivele";
+//
+//		lang.text [5].lang[0]= "Go Back";
+//		lang.text [5].lang[1]= "Inapoi";
+//
+//		lang.text [6].lang[0]= "Volume: ";
+//		lang.text [6].lang[1]= "Volum: ";
+//
+//		lang.text [7].lang[0]= "Language: ";
+//		lang.text [7].lang[1]= "Limba: ";
+//
+//		//maze mode
+//		lang.text [8].lang[0]= "Instructions";
+//		lang.text [8].lang[1]= "Instructiuni";
+//
+//		lang.text [9].lang[0]= "Get to the end of the maze as soon as you can!\nPress ESC to pause the game.";
+//		lang.text [9].lang[1]= "Gaseste iesirea din labirint in cat mai putin timp!\nApasa ESC pentru a pune pauza.";
+//
+//		lang.text [10].lang[0]= "Collect coins to increase your score :)";
+//		lang.text [10].lang[1]= "Strange monede pentru a-ti creste scorul :)";
+//
+//		lang.text [11].lang[0]= "Let's go!";
+//		lang.text [11].lang[1]= "Ok!";
+//
+//		lang.text [12].lang[0]= "Congratulations!";
+//		lang.text [12].lang[1]= "Felicitari!";
+//
+//		lang.text [13].lang[0]= "You have completed the maze in ";
+//		lang.text [13].lang[1]= "Ai terminat labirintul in ";
+//
+//		lang.text [14].lang[0]= "seconds!\nYour final score is:";
+//		lang.text [14].lang[1]= "secunde!\nScorul tau final este:";
+//
+//
+//		lang.text [15].lang[0]= "Continue";
+//		lang.text [15].lang[1]= "Continua";
+//
+//		lang.text [16].lang[0]= "Time: ";
+//		lang.text [16].lang[1]= "Timp: ";
+//
+//		lang.text [17].lang[0]= "Score: ";
+//		lang.text [17].lang[1]= "Scor: ";
+//
+//		//level creator
+//
+//
+//		lang.text [18].lang[0]= "Level Creator";
+//		lang.text [18].lang[1]= "Creator Nivele";
+//
+//
+//		lang.text [19].lang[0]= "Welcome! Here you can create your own levels,\nor load an existing level to play it.\n Press ESC when playing the level \nto go back to the level editor.";
+//		lang.text [19].lang[1]= "Bine ai venit! Aici poti crea nivele noi\nsau sa incarci nivele deja create.\nApasa ESC in timpul jocului\n pentru a te intoarce la editor.";
+//
+//
+//		lang.text [20].lang[0]= "Got it!";
+//		lang.text [20].lang[1]= "Ok!";
+//
+//		lang.text [21].lang [0] = "\nNew High Score!";
+//		lang.text [21].lang [1] = "\nNou record!";
+//
+//		lang.text [22].lang [0] = "Mute Sound";
+//		lang.text [22].lang [1] = "Opreste Sunetul";
+//
+//		lang.text [23].lang [0] = "Back to Main Menu";
+//		lang.text [23].lang [1] = "Inapoi la meniu";
+//
+//		lang.text [24].lang [0] = "Paused";
+//		lang.text [24].lang [1] = "Pauza";
+//
+//		lang.text [25].lang [0] = "Unmute Sound";
+//		lang.text [25].lang [1] = "Porneste Sunetul";
+//
+//		lang.text [26].lang [0] = "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!";
+//		lang.text [26].lang [1] = "Termina puzzle-urile in cat mai putin timp!\nColecteaza monedele pentru a deschide iesirea..\nEvita capcanele!";
+//
+//		lang.text [27].lang [0] = "Coins: ";
+//		lang.text [27].lang [1] = "Monede: ";
+//
+//		lang.text [28].lang [0] = "You have completed Puzzle Mode in ";
+//		lang.text [28].lang [1] = "Ai terminat Modul Puzzle in ";
+//
+//		lang.text [29].lang [0] = " seconds.\n In total, you have died ";
+//		lang.text [29].lang [1] = " secunde.\n In total, ai murit de ";
+//
+//		lang.text [30].lang [0] = " times.";
+//		lang.text [30].lang [1] = " ori.";
+//
+//
+//
+//
+//
+//		//print (lang.text [2].ro);
+//		string langData = JsonUtility.ToJson (lang,true);
+//		print (langData);
+//		File.WriteAllText ("Assets/Language/Language.json",langData);
 	}
 
 	void Update() {
@@ -176,7 +178,7 @@ public class CreatorUI : MonoBehaviour {
 			LcPlayer.shouldMove = false;
 			setEditMode (true);
 			player.GetComponent<Transform> ().SetPositionAndRotation (playerInitialPos, Quaternion.identity);
-			print (player.GetComponent<Transform>().position.ToString());
+		
 			player.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
 
@@ -276,19 +278,23 @@ public class CreatorUI : MonoBehaviour {
 				lc.spawnObject (3);
 			}
 
+		
 
-			if (GUI.Button (toolboxBtns [5],"",skin.GetStyle("LcRotateModeBtn"))) {
+
+			if (GUI.Button (toolboxBtns [5],"",skin.GetStyle(RotateModeStyle))) {
 
 				rotateMode = !rotateMode;
-				//rotateModeString = (rotateMode==true) ? "Stop\nRotating" :  "Rotate\nMode";
+				RotateModeStyle = (rotateMode == false) ? "LcRotateModeBtn" : "LcCrossedRotateBtn";
+
 
 			}
 
 		
-				if (GUI.Button (toolboxBtns [6],"",skin.GetStyle("LcDeleteModeBtn"))) {
+				if (GUI.Button (toolboxBtns [6],"",skin.GetStyle(DeleteModeStyle))) {
 			
 					deleteMode = !deleteMode;
-					//deleteModeString = (deleteMode==true) ? "Stop\nDeleting" : "Delete\nMode";
+					DeleteModeStyle = (deleteMode == false) ? "LcDeleteModeBtn" : "LcCrossedDeleteBtn";
+
 				}
 		
 
@@ -347,15 +353,16 @@ public class CreatorUI : MonoBehaviour {
 
 			//buton start playing
 			if (LcPlayer.shouldMove == false)
-					if (GUI.Button (toolboxBtns [0], "",skin.GetStyle("LcPlayBtn"))) {
+					if (GUI.Button (toolboxBtns [10], "",skin.GetStyle("LcPlayBtn"))) {
 
 				if (GameObject.Find ("MazePlayer") && GameObject.Find ("MazeGoal")) {
 					playMode = true;
-					playerInitialPos = player.GetComponent<Transform> ().position;
-					print (playerInitialPos.ToString ());
+
+					playerInitialPos = GameObject.Find("MazePlayer").GetComponent<Transform>().position;
+					print (playerInitialPos.ToString());
 
 					// &= -> AND pe biti. ~ -> negated mask
-					player.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.None;
+					player.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotation;
 
 					setEditMode (false);
 					LcPlayer.shouldMove = true;
@@ -374,7 +381,7 @@ public class CreatorUI : MonoBehaviour {
 				showNamingWindow = !showNamingWindow;
 		
 			}
-					if (GUI.Button (toolboxBtns [8],"",skin.GetStyle("LcLoadBtn"))) {
+					if (GUI.Button (toolboxBtns [8],"Load",skin.GetStyle("LcLoadBtn"))) {
 
 				showLoadlevelWindow = !showLoadlevelWindow;
 			}
@@ -419,7 +426,7 @@ public class CreatorUI : MonoBehaviour {
 			GUI.EndScrollView ();
 
 			if (GUI.Button (new Rect (100, 340, 50, 30), "Load")) {
-
+				lc.clearLevel ();
 				lc.loadLevel (levelList[selectedLevelId]);
 				showLoadlevelWindow = false;
 			}
@@ -441,14 +448,16 @@ public class CreatorUI : MonoBehaviour {
 	
 		editMode = status;
 		if (status == true) {
-				//savedCameraPos = Camera.main.transform.position;
-				//savedCameraRot = Camera.main.transform.rotation;
+			
 				Camera.main.transform.SetPositionAndRotation (editModePos, Quaternion.Euler (new Vector3 (90, 0, 0)));
+				Camera.main.fieldOfView = 40;
 
 
 		} else {
-		
-			Camera.main.transform.SetPositionAndRotation(viewModePos,viewModeRot);
+			Camera.main.fieldOfView = 61.9F;
+
+			Camera.main.transform.SetPositionAndRotation(new Vector3 (8, 12, -12),viewModeRot);
+
 		}
 	}
 }

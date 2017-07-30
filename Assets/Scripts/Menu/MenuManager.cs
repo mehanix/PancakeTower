@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour {
 
 	Animator animator;
 
+	public AnimationClip anim;
 	void Start() {
 		
 		languagemanager = GetComponent<LanguageManager> (); 
@@ -29,7 +30,6 @@ public class MenuManager : MonoBehaviour {
 	}
 	void Update() {
 	
-		//print(languagemanager.lang.text [2].lang [languageCode]);
 		for(int i=0;i<buttons.Length-1;i++) {
 
 			buttons [i].GetComponentInChildren<Text> ().text = languagemanager.lang.text [i].lang [languageCode];
@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour {
 
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
 
-		socialButton.GetComponent<RectTransform> ().localPosition = new Vector3 (Screen.width - 100, 1, Screen.height - 100);
+
 	}
 	public void onToggleButtonClick(){
 	
@@ -53,7 +53,12 @@ public class MenuManager : MonoBehaviour {
 	void toggleMenus() {
 	
 		mainMenuButtons.SetActive (!mainMenuButtons.activeInHierarchy);
+
+		mainMenuButtons.GetComponent<Animation> ().Play("ButtonSlideUp");
 		playMenuButtons.SetActive (!mainMenuButtons.activeInHierarchy);
+		playMenuButtons.GetComponent<Animation> ().Play("ButtonSlideUp");
+
+
 	}
 
 	//main menu buttons

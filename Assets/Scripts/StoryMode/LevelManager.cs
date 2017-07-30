@@ -11,11 +11,11 @@ public class LevelManager : MonoBehaviour {
 	float previousY;
 	public CoordinateManager cm;
 	AudioSource audiosource;
-	public bool showPausedWindow=false,paused=false;
+	public bool showPausedWindow=false,paused = false;
 	string soundMuteText;
 	public GUISkin skin;
 	public GameObject player;
-	public bool shouldShowInstructionsWindow=true;
+	public bool shouldShowInstructionsWindow=true,shouldShowVictoryWindow=false;
 	public Rect windowRect,scoreWindowRect,buttonRect;
 	public Timer timer;
 	public LanguageManager languagemanager;
@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour {
 		cm = GameObject.Find("GameManager").GetComponent<CoordinateManager> ();
 		audiosource = gameObject.GetComponent<AudioSource> ();
 
+		audiosource.mute = (PlayerPrefs.GetInt ("Muted") == 1) ? true : false;
 		levels[currentLevel] = Instantiate(levels[0],new Vector3(-4,0,-5), Quaternion.identity) as GameObject;
 		player = GameObject.Find ("Player");
 		languageCode = (OptionsManager.language == true) ? 1 : 0;
@@ -53,8 +54,10 @@ public class LevelManager : MonoBehaviour {
 			GUI.Window (0, scoreWindowRect, Windows, languagemanager.lang.text [8].lang[languageCode] ,skin.GetStyle("MMInstructionsWindow"));
 		if (showPausedWindow == true)
 			GUI.Window (1, new Rect ((Screen.width / 2) - 75, (Screen.height / 2) - 125, 150, 250), Windows, "Paused", skin.GetStyle ("MMInstructionsWindow"));
-		timer.coinScoreText = languagemanager.lang.text [27].lang [languageCode] + playermovement.coinCount + "/" + playermovement.totalCoinsPerLevel;
-		print (timer.coinScoreText);
+			timer.coinScoreText = languagemanager.lang.text [27].lang [languageCode] + playermovement.coinCount + "/" + playermovement.totalCoinsPerLevel;
+	
+		if (shouldShowVictoryWindow == true)
+			windowRect = GUI.Window (2, scoreWindowRect, Windows, languagemanager.lang.text [12].lang[languageCode],skin.GetStyle("MMInstructionsWindow"));
 	}
 
 	void Windows(int windowId) {
@@ -74,24 +77,53 @@ public class LevelManager : MonoBehaviour {
 
 
 		if (windowId == 1) {
-			soundMuteText = (audiosource.mute == true) ? "Unmute Sound" : "Mute Sound";
+			soundMuteText = (audiosource.mute == true) ? languagemanager.lang.text [25].lang [languageCode] : languagemanager.lang.text [22].lang [languageCode];
 
 			if (GUI.Button (new Rect (15, 90, 120, 30), "Reset Level")) {
 				resetLevel ();
+				showPausedWindow = false;
+				paused = false;
 			}
 
 			if (GUI.Button (new Rect (15, 130, 120, 30), soundMuteText)) {
 
 				audiosource.mute = !audiosource.mute;
+				PlayerPrefs.SetInt ("Muted", (audiosource.mute == true) ? 1 : 0);
 
 			}
-			if (GUI.Button (new Rect(15,170,120,30), "Back to Main Menu")) {
+			if (GUI.Button (new Rect (15, 170, 120, 30), "Back to Main Menu")) {
 
 				SceneManager.UnloadSceneAsync ("StoryMode");
 				SceneManager.LoadScene ("Menu");
 			}
 
 
+		}
+
+		if (windowId == 2) {
+		
+			string victoryMessage = languagemanager.lang.text [28].lang[languageCode] + timer.currentTime + languagemanager.lang.text [29].lang[languageCode] + playermovement.deaths + languagemanager.lang.text [30].lang[languageCode];
+
+			PlayerPrefs.SetInt ("PMDeaths", playermovement.deaths);
+
+			float result;
+			float.TryParse (timer.currentTime, out result);
+
+			if ( result < PlayerPrefs.GetFloat ("PMBestTime", float.MaxValue)) {
+
+
+				PlayerPrefs.SetFloat ("PMBestTime", result);
+				PlayerPrefs.Save ();
+			}
+
+			GUI.Label (new Rect (0, 60, 400, 50), victoryMessage, skin.GetStyle ("MMCenteredText"));
+
+
+			if (GUI.Button (new Rect (150, 185, 100, 35), languagemanager.lang.text [15].lang[languageCode])) {
+
+				//tba fancy fade effect?
+				SceneManager.LoadScene ("Menu");
+			}
 		}
 	}
 		
@@ -109,7 +141,7 @@ public class LevelManager : MonoBehaviour {
 
 		cm.LevelPositions [currentLevel].y = previousY +cm.LevelPositions [currentLevel].y+4.5F;
 
-
+		playermovement.maxSpeed = 5;
 		levels[currentLevel] = Instantiate(levels[currentLevel],cm.LevelPositions[currentLevel], Quaternion.identity) as GameObject;
 
 		levels [currentLevel].transform.SetParent (floor.transform);

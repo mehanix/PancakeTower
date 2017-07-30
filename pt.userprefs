@@ -1,15 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MazeMode\MazeGUI.cs">
-    <Files>
-      <File FileName="Assets\Scripts\StoryMode\LevelManager.cs" Line="57" Column="31" />
-      <File FileName="Assets\Scripts\MazeMode\Timer.cs" Line="44" Column="16" />
-      <File FileName="Assets\Scripts\StoryMode\PlayerMovement.cs" Line="153" Column="3" />
-      <File FileName="Assets\Scripts\MazeMode\MazeGUI.cs" Line="40" Column="3" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Nix\Documents\GitHub\pt\Assets\Scripts\StoryMode\PlayerMovement.cs" line="134" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
