@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour {
 		mazegui = GetComponent<MazeGUI> ();
 		levelmanager = GetComponent<LevelManager> (); 
 		 scene = SceneManager.GetActiveScene ();
-		print (timerRect.ToString());
+	
 		if (scene.name == "MazeMode")
 			showScore = true;
 
