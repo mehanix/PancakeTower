@@ -1,0 +1,190 @@
+{
+    "text": [
+        {
+            "lang": [
+                "Play",
+                "Joaca"
+            ]
+        },
+        {
+            "lang": [
+                "Settings",
+                "Setări"
+            ]
+        },
+        {
+            "lang": [
+                "Puzzle Mode",
+                "Modul Puzzle"
+            ]
+        },
+        {
+            "lang": [
+                "Maze Mode",
+                "Modul Labirint"
+            ]
+        },
+        {
+            "lang": [
+                "Level Creator",
+                "Creator Nivele"
+            ]
+        },
+        {
+            "lang": [
+                "Go Back",
+                "Inapoi"
+            ]
+        },
+        {
+            "lang": [
+                "Volume: ",
+                "Volum: "
+            ]
+        },
+        {
+            "lang": [
+                "Language: ",
+                "Limba: "
+            ]
+        },
+        {
+            "lang": [
+                "Instructions",
+                "Instructiuni"
+            ]
+        },
+        {
+            "lang": [
+                "Get to the end of the maze as soon as you can!\nPress ESC to pause the game.",
+                "Gaseste iesirea din labirint in cat mai putin timp!\nApasa ESC pentru a pune pauza."
+            ]
+        },
+        {
+            "lang": [
+                "Collect coins to increase your score :)",
+                "Strange monede pentru a-ti creste scorul :)"
+            ]
+        },
+        {
+            "lang": [
+                "Let's go!",
+                "Ok!"
+            ]
+        },
+        {
+            "lang": [
+                "Congratulations!",
+                "Felicitari!"
+            ]
+        },
+        {
+            "lang": [
+                "You have completed the maze in ",
+                "Ai terminat labirintul in "
+            ]
+        },
+        {
+            "lang": [
+                "seconds!\nYour final score is:",
+                "secunde!\nScorul tau final este:"
+            ]
+        },
+        {
+            "lang": [
+                "Continue",
+                "Continua"
+            ]
+        },
+        {
+            "lang": [
+                "Time: ",
+                "Timp: "
+            ]
+        },
+        {
+            "lang": [
+                "Score: ",
+                "Scor: "
+            ]
+        },
+        {
+            "lang": [
+                "Level Creator",
+                "Creator Nivele"
+            ]
+        },
+        {
+            "lang": [
+                "Welcome! Here you can create your own levels,\nor load an existing level to play it.\n Press ESC when playing the level \nto go back to the level editor.",
+                "Bine ai venit! Aici poti crea nivele noi\nsau sa incarci nivele deja create.\nApasa ESC in timpul jocului\n pentru a te intoarce la editor."
+            ]
+        },
+        {
+            "lang": [
+                "Got it!",
+                "Ok!"
+            ]
+        },
+        {
+            "lang": [
+                "\nNew High Score!",
+                "\nNou record!"
+            ]
+        },
+        {
+            "lang": [
+                "Mute Sound",
+                "Opreste Sunetul"
+            ]
+        },
+        {
+            "lang": [
+                "Back to Main Menu",
+                "Inapoi la meniu"
+            ]
+        },
+        {
+            "lang": [
+                "Paused",
+                "Pauza"
+            ]
+        },
+        {
+            "lang": [
+                "Unmute Sound",
+                "Porneste Sunetul"
+            ]
+        },
+        {
+            "lang": [
+                "Complete the puzzles as quickly as you can!\nAll coins must be collected for the exit to open.\nAvoid spike traps!",
+                "Termina puzzle-urile in cat mai putin timp!\nColecteaza monedele pentru a deschide iesirea..\nEvita capcanele!"
+            ]
+        },
+        {
+            "lang": [
+                "Coins: ",
+                "Monede: "
+            ]
+        },
+        {
+            "lang": [
+                "You have completed Puzzle Mode in ",
+                "Ai terminat Modul Puzzle in "
+            ]
+        },
+        {
+            "lang": [
+                " seconds.\n In total, you have died ",
+                " secunde.\n In total, ai murit de "
+            ]
+        },
+        {
+            "lang": [
+                " times.",
+                " ori."
+            ]
+        }
+    ]
+}
