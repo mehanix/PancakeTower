@@ -1,10 +1,14 @@
 <p align="center"><img src="./Assets/UI/Graphics/logo.png"> </p>
-<p align="center">A puzzle game with level creation support</p>
+<p align="center">~ a puzzle game with level creation support ~</p>
 
 ## What is Pancake Tower?
-**Pancake Tower** is a puzzle game, where the player has to perform different tasks, depending on the chosen gamemode. There are two gamemodes in Pancake Tower:
+**Pancake Tower** is a puzzle game, where the player has to perform different tasks, depending on the chosen gamemode.
 <p align="center"><img src="./Assets/UI/Graphics/menu-gif.gif"> </p>
 
+
+There are two gamemodes in Pancake Tower:
+ 
+ 
 ### Puzzle Mode
 * Complete the given puzzle, while avoiding death by spikes
 * Interact with puzzle elements, and touch speed pads that increase your movement speed
