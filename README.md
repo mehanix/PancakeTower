@@ -3,6 +3,7 @@
 
 ## What is Pancake Tower?
 **Pancake Tower** is a puzzle game, where the player has to perform different tasks, depending on the chosen gamemode. There are two gamemodes in Pancake Tower:
+<p align="center"><img src="./Assets/UI/Graphics/menu-gif.gif"> </p>
 
 ### Puzzle Mode
 * Complete the given puzzle, while avoiding death by spikes
